@@ -1,13 +1,13 @@
 # <span id='top'>Bonus - ☸️Kubeadm</span>
 
-[[Setup]](#Setup)  
+[[Setup Vagrant]](#vagrant)  
 [[]](#)  
 [[🤲Hands-on]](#)  
 [[References]](#ref)
 
 <br>
 
-## <span id='Setup'>Setup</span>
+## <span id='vagrant'>Setup Vagrant</span>
 
 [[Top]](#top)
 
