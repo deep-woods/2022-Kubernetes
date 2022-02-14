@@ -21,7 +21,7 @@ Download the installation package
 
 Install Vagrant on your CentOS machine
 
-    yum –y localinstall vagrant_2.2.2_x86_64.rpm
+    yum –y localinstall vagrant_2.2.19_x86_64.rpm
 
     vagrant ––version
 
