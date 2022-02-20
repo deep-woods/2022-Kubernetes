@@ -3,10 +3,29 @@
 <br>
 
 [[Nodes]](#Nodes)  
+[[`Shortcuts`]](#Shortcuts)  
 [[`kubectl`]](#kubectl)  
 [[`Minikube`]](#Minikube)  
 [[Setup]](#setup)  
 [[References]](#ref)
+
+<br>
+
+## <span id='Shortcuts'>Shortcuts</span>
+
+[[Top]](#top)
+
+| Shortcuts | Meaning                  |
+| --------- | ------------------------ |
+| `po`      | `Pods`                   |
+| `rs`      | `ReplicaSet`             |
+| `deploy`  | `Deployment`             |
+| `svc`     | `Services`               |
+| `ns`      | `Namespaces`             |
+| `netpol`  | `Network policies`       |
+| `pv`      | `Persistent Volumes`     |
+| `pvc`     | `PersistentVolumeClaims` |
+| `sa`      | `service accounts`       |
 
 <br>
 

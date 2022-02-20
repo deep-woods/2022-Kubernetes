@@ -54,6 +54,25 @@ Install Vagrant on your CentOS machine
         MASTER_IP_START = 1
         NODE_IP_START = 2
 
+4.  Check `vagrant` status.
+
+        $ vagrant status
+
+        No usable default provider could be found for your system.
+
+        Vagrant relies on interactions with 3rd party systems, known as
+        "providers", to provide Vagrant with resources to run development
+        environments. Examples are VirtualBox, VMware, Hyper-V.
+
+        The easiest solution to this message is to install VirtualBox, which
+        is available for free on all major platforms.
+
+        If you believe you already have a provider available, make sure it
+        is properly installed and configured. You can see more details about
+        why a particular provider isn't working by forcing usage with
+        `vagrant up --provider=PROVIDER`, which should give you a more specific
+        error message for that particular provider.
+
 <br>
 
 ## <span id=''></span>

@@ -1,7 +1,5 @@
 # <span id='top'>☸️ </span>
 
-<br>
-
 [[]](#)  
 [[]](#)  
 [[🤲Hands-on]](#)  
@@ -10,11 +8,11 @@
 <br>
 
 ├──
-│ ├──
-│ └──
+│ㅤㅤ├──
+│ㅤㅤ└──
 ├──
-│ ├──
-│ └──
+│ㅤㅤ├──
+│ㅤㅤ└──
 ├──
 ├──
 │  
@@ -58,4 +56,4 @@
 
 [[Top]](#top)
 
-- kodekloud https://kodekloud.com/courses/docker-for-the-absolute-beginner/
+- kodekloud https://kodekloud.com/courses/certified-kubernetes-application-developer-ckad/
