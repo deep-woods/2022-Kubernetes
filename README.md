@@ -1,8 +1,21 @@
 # <span id='top'>☸️2022-Kubernetes</span>
 
-[[Hard-work 👣Footprints👣]](#Certs)
-[[Revision]](#Revision)
-[[References]](#ref)
+[[Hard-work 👣Footprints👣]](#Certs)  
+[[Revision]](#Revision)  
+[[References]](#ref)  
+
+| Shortcuts | Meaning                  |
+| --------- | ------------------------ |
+| `po`      | `Pods`                   |
+| `rs`      | `ReplicaSet`             |
+| `deploy`  | `Deployment`             |
+| `svc`     | `Services`               |
+| `ns`      | `Namespaces`             |
+| `netpol`  | `Network policies`       |
+| `pv`      | `Persistent Volumes`     |
+| `pvc`     | `PersistentVolumeClaims` |
+| `sa`      | `service accounts`       
+
 
 ## <span id='Certs'>Hard-work 👣Footprints👣</span>
 
