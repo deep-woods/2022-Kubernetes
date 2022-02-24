@@ -1,9 +1,10 @@
 # <span id='top'>01-04 Deploymentes</span>
 
 [[Common deployment errors]](#errors)  
-[[deployment]](#deployment)
-[[🤲Hands-on]](#handson)  
-[[References]](#ref)
+[[deployment]](#deployment)  
+[[Resource Quota]](#quota)  
+[[🤲Hands-on]](#handson)    
+[[References]](#ref)  
 
 <br>
 
@@ -135,6 +136,33 @@ You can check the status:
       $ kubectl get deployment.apps/httpd-frontend
       NAME             READY   UP-TO-DATE   AVAILABLE   AGE
       httpd-frontend   5/5     5            5           7m15s
+
+<br>
+
+## <span id='quota'>Resource Quota</span>
+
+[[Top]](#top)
+
+Limit resources in a namespace. 
+
+        compute-quota.yaml
+        
+        apiVersion: v1
+        kind: ResourceQuota
+        metadata: 
+            name: compute-quota
+            namespace: dev
+        
+        spec:
+            hard:
+                prods: "10"
+                requests.cpu: "4"
+                requests.memory: 5Gi
+                limits.cpu: "10"
+                limits.memory: 10Gi
+
+        $ kubectl create -f compute-quota.yaml
+
 
 <br>
 
