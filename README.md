@@ -21,6 +21,7 @@ describe
 explain --recursive  
 edit  
 apply -f  
+exec
 
 
 ## <span id='Certs'>Hard-work 👣Footprints👣</span>
