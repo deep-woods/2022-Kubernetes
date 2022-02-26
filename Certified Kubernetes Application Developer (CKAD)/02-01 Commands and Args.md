@@ -1,6 +1,7 @@
 # <span id='top'>02-01 Commands and Args</span>
 
 [[Comparative Commands]](#commands)  
+[[ENV Value Types]](#ENV)  
 [[🤲Hands-on Lab]](#handson)  
 [[References]](#ref)
 
@@ -22,6 +23,33 @@
           image: kodekloud/webapp-color
           command: ["python", "app.py"]
           args: ["--color", "pink"]
+
+<br>
+
+## <span id='ENV'>Commands and Args and ENV Value Types</span>
+
+[[Top]](#top)
+
+`Configuration`
+├── `ConfigMaps`
+├── `SecurityContexts`
+├── `Resource Requirements`
+├── `Secrets`
+└── `Service Accounts`
+
+        env:
+          - name: APP_COLOR
+            value: pink
+
+        env:
+          - name: APP_COLOR
+            valueFrom:
+                configMapKeyRef
+
+        env:
+          - name: APP_COLOR
+            valueFrom:
+                secretKeyRef
 
 <br>
 
