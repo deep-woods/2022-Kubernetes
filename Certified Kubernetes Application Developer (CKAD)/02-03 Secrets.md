@@ -16,6 +16,24 @@ _Because Secrets can be created independently of the Pods that use them, there i
 
 _Secrets are similar to ConfigMaps but are specifically intended to hold confidential data._ (Kubernetes)
 
+### Notes
+
+The `secrets` in Kubernetes are not encrypted, they are just encoded in 64. As such, they are not safe per se, but adhering to best practices in combination of `secrets` can certainly make it safer:
+
+- Not checking-in secret object definition files to source code repositories.
+- Enabling Encryption at Rest for Secrets so they are stored encrypted in ETCD.
+
+Kubernetes's safety features:
+
+- Send a `secret` to a node only if a `pod` on that node requires it.
+- **Kubelet stores the `secret` into a tmpfs so that the secret is not written to disk storage**.
+- **Once the Pod that depends on the secret is deleted, kubelet will delete its local copy of the secret data as well**. (Kodekloud)
+
+### Some better security options for `secrets`
+
+- Helm Secrets
+- [HashiCorp Vault](https://www.vaultproject.io/)
+
 <br>
 
 ## <span id='handson'>🤲Hands-on Lab</span>

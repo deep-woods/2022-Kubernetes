@@ -173,3 +173,4 @@ Now, create a `pod` using the updated definition file.
 
 - kodekloud https://kodekloud.com/courses/certified-kubernetes-application-developer-ckad/
 - https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+- Encrypting Secret Data at Rest https://kubernetes.io/docs/tasks/administer-cluster/encrypt-data/

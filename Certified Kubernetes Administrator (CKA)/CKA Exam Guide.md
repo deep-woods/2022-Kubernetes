@@ -1,6 +1,6 @@
-# <span id='top'>02-01 Commands and Args</span>
+# <span id='top'>Exam Guide</span>
 
-[[]](#)  
+[[CKA]](#CKA)  
 [[]](#)  
 [[🤲Hands-on Lab]](#handson)  
 [[References]](#ref)
@@ -19,9 +19,19 @@
 ├──
 └──
 
-## <span id=''> </span>
+## <span id='CKA'>Certified Kubernetes Administrator (CKA)</span>
 
 [[Top]](#top)
+
+### 12% - Security
+
+- Know how to configure `authentication` and `authorisation`.
+- Understand `Kubernetes security primitives`
+- Know to configure `network policies`.
+- Create and manage `TLS certificates` for `cluster components`.
+- Work with images securely.
+- Define `security contexts`.
+- Secure persistent key value store.
 
 <br>
 
