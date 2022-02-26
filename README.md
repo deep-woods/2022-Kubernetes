@@ -16,6 +16,12 @@
 | `pvc`     | `PersistentVolumeClaims` |
 | `sa`      | `service accounts`       
 
+get  
+describe  
+explain --recursive  
+edit  
+apply -f  
+
 
 ## <span id='Certs'>Hard-work 👣Footprints👣</span>
 
