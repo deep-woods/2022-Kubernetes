@@ -23,6 +23,9 @@ edit
 apply -f  
 exec
 
+-oyaml
+-o yaml
+-o=yaml
 
 ## <span id='Certs'>Hard-work 👣Footprints👣</span>
 
