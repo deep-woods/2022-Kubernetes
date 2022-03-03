@@ -50,8 +50,6 @@
 [[Top]](#top)
 
 <br>
-
-<br>
 <br>
 
 ### <span id='ref'>References</span>

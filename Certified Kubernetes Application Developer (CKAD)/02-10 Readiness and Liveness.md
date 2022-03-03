@@ -182,50 +182,50 @@ We run the curl test, and understandably:
         $ kubectl get po
 
             NAME              READY   STATUS    RESTARTS   AGE
-            simple-webapp-1   1/1     Running   0          13m
-            simple-webapp-2   1/1     Running   0          4m5s
+            little-forest-app-1   1/1     Running   0          13m
+            little-forest-app-2   1/1     Running   0          4m5s
 
         $ bash /root/curl-test.sh
 
-            Message from simple-webapp-1👈 : I am ready! OK
+            Message from little-forest-app-1👈 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-2👈👈 : I am ready! OK
+            Message from little-forest-app-2👈👈 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-2 : I am ready! OK
+            Message from little-forest-app-2 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
-            Message from simple-webapp-1 : I am ready! OK
+            Message from little-forest-app-1 : I am ready! OK
 
 5.  Figure out what happens when the app crashes.
 
@@ -246,11 +246,11 @@ Once the application crashes, the container is restarted.
 Both pods are up and running atm.
 
             NAME              READY    STATUS    RESTARTS   AGE
-            simple-webapp-1   1/1      Running   1          19m
-            simple-webapp-2   1/1 👈  Running   1          9m59s
+            little-forest-app-1   1/1      Running   1          19m
+            little-forest-app-2   1/1 👈  Running   1          9m59s
 
         $ ls
-            crash-app.sh  curl-test.sh  freeze-app.sh  simple-webapp-2-pod.yaml
+            crash-app.sh  curl-test.sh  freeze-app.sh  little-forest-app-2-pod.yaml
 
         $ bash freeze-app.sh
         $ nohup: appending output to 'nohup.out' 👈 BUT FREEZES
@@ -260,8 +260,124 @@ Then it's not ready anymore.
         $ kubectl get po
 
             NAME              READY   STATUS    RESTARTS   AGE
-            simple-webapp-1   1/1     Running   1          20m
-            simple-webapp-2   0/1 👈  Running   1          11m
+            little-forest-app-1   1/1     Running   1          20m
+            little-forest-app-2   0/1 👈  Running   1          11m
+
+7.  Edit the pod definition and run them again.
+
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            name: little-forest-app
+          name: little-forest-app-1
+          namespace: default
+        spec:
+          containers:
+          - env:
+            - name: APP_START_DELAY
+              value: "80"
+            image: kodekloud/webapp-delayed-start
+            imagePullPolicy: Always
+            name: little-forest-app
+            ports:
+            - containerPort: 8080
+              protocol: TCP
+            readinessProbe:  👈
+              httpGet:       👈
+                path: /ready 👈
+                port: 8080   👈
+            livenessProbe:   👈
+              httpGet:       👈
+                path: /live  👈
+                port: 8080   👈
+              periodSeconds: 1        👈
+              initialDelaySeconds: 80 👈
+
+        $ kubectl create -f app1-pod.yaml
+
+            pod/little-forest-app-1 created
+
+        $ kubectl create -f app2-pod.yaml
+
+            pod/little-forest-app-2 created
+
+8.  Now that the 'livenessProbe' is configured on both pods, they will be restarted right back like roly polys in case anything happens.
+
+        $ kubectl get po
+
+            NAME              READY   STATUS    RESTARTS   AGE
+            little-forest-app-1   1/1     Running   0          56s
+            little-forest-app-2   1/1     Running   0          4m1s
+
+        $ $ kubectl get po
+
+            NAME              READY   STATUS    RESTARTS   AGE
+            little-forest-app-1   1/1     Running   0          112s
+            little-forest-app-2   1/1     Running   0          4m57s
+
+        $ $ kubectl get po
+
+            NAME              READY   STATUS    RESTARTS   AGE
+            little-forest-app-1   1/1     Running   0          115s
+            little-forest-app-2   1/1     Running   0          5m
+
+        $ $ bash curl-test.sh
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+            Message from little-forest-app-1 : I am ready! OK
+
+            Message from little-forest-app-2 : I am ready! OK
+
+<br>
+
+### Troubleshooting - Error in the definition file
+
+Spelling error
+
+        $ kubectl create -f app2-pod.yaml
+
+            error: error validating "app2-pod.yaml": error validating data: ValidationError(Pod.spec.containers[0].livenessProbe): unknown field "initalDelaySeconds" 👈 in io.k8s.api.core.v1.Probe; if you choose to ignore these errors, turn validation off with --validate=false
+
+Indentation error
+
+            error: error validating "app1-pod.yaml": error validating data: ValidationError(Pod.spec): unknown field 👈"livenessProbe"👈 in io.k8s.api.core.v1.PodSpec; if you choose to ignore these errors, turn validation off with --validate=false
 
 <br>
 <br>
