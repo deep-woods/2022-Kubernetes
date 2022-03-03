@@ -1,48 +1,15 @@
 # <span id='top'>02-09 Multi-Container Pods</span>
 
 [[Multi-Container Pods]](#Multicontainer)  
-[[]](#)  
 [[🤲Hands-on Lab]](#handson)  
 [[References]](#ref)
 
 <br>
 
-├──
-│ㅤㅤ├──
-│ㅤㅤ└──
-├──
-│ㅤㅤ├──
-│ㅤㅤ└──
-├──
-├──
-│  
-├──
-└──
-
 ## <span id='Multicontainer'>Multi-Container Pods</span>
-
-[[Top]](#top)
-
-<br>
-
-## <span id=''></span>
-
-[[Top]](#top)
-
-<br>
-
-<br>
-<br>
-
-## <span id=''></span>
-
-[[Top]](#top)
 
 When creating a multi-container pod, create a `.yaml` file as usual. As an image must be assigned to create a pod, the image used in this case will simply be one among the multiple containers after the definition has been modified.
 
-<br>
-
-<br>
 <br>
 
 ## <span id='handson'>🤲Hands-on Lab</span>
@@ -169,9 +136,6 @@ Check the status if the containers are running fine.
         $ kubectl create -f app-pod.yaml
             pod/app created
 
-  <br>
-
-<br>
 <br>
 
 ### <span id='ref'>References</span>
