@@ -68,6 +68,10 @@ Or, alternatively, `grep` only the lines you want to see.
 
 2.  By checking logs, figure out the cause of user complaint (cannot place a purchase order).
 
+        $ kubectl logs forest-2 -c
+
+            db          birch-garden
+
         $ kubectl logs forest-2 birch-garden
 
         Login as the account is locked due to MANY FAILED ATTEMPTS.
