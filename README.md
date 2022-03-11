@@ -61,6 +61,9 @@ https://kodekloud.com/topic/kubernetes-on-azure-aks/
 
 - You must use VirtualBox, VMware, or Hyper-V.
 
+5. Kubernetes CKAD - Kibana Dashboard
+   https://www.loom.com/share/c2ae70197e8340a0ba77fc1de8179182
+
 <br>
 
 ### <span id='ref'>References</span>
